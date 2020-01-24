@@ -1,50 +1,57 @@
-// class List {
-//     constructor() {
-//         this.data = [];
-//     }
+//Aula 5 
 
-//     add(data) {
-//         this.data.push(data);
-//         console.log(this.data);
-//         //document.getElementById('valorTodo').value('');
-//     }
-// }
+function teste(x){
+	let y = 2; 
 
-// class TodoList extends List {
-//     // constructor() {
-//     //     this.todos = [];
-//     // }
+	if (x > 5){
 
-//     // addTodo(){
-//     //     this.todos.push('Novo Todo');
-//     //     console.log(this.todos);
-//     // }
-
-//     constructor(){
-//         super();
-//         this.usuario = 'Diego';
-//     }
-
-//     mostraUsuario() {
-//         console.log(this.usuario);
-//     }
-// }
-
-// var MinhaLista = new TodoList();
-
-// document.getElementById('novotodo').onclick = function(){
-//     MinhaLista.add(document.getElementById('valorTodo').value);
-// };
-
-// MinhaLista.mostraUsuario();
-
-class Matematica{
-    constructor(){
-        this.todos = [];        
-    }
-
-    static soma(a, b){//Método estático recebe informação e retorna o dado processado independente do restante da classe
-        return a + b;
-    }
+		let y = 4;
+		console.log(x,y);
+	}
 }
-console.log(Matematica.soma(15, 15));
+
+teste(10);
+
+//aula 6
+
+const arr = [1, 3, 4, 5, 8, 9]
+
+// map = percorre o array e multiplica por 2
+const newArr = arr.map(function(item) {
+	return item * 2;
+});
+
+console.log('newArrn ', newArr);
+
+const newArr2 = arr.map(function(item, index, test) {
+	return item + ' posição ' + index;
+});
+
+console.log('newArr2 ', newArr2);
+
+//reduce = faz a soma de todos os valores do array
+//soma [0] e [1], depois o resultado de ambos ao [2] e sucecivamente
+
+const sum = arr.reduce(function(total, nextValue){
+	return total + nextValue; 
+})
+
+console.log('sum ', sum);
+
+//filter 'filtra' valores do array conforme estipulado
+
+const filter = arr.filter(function(item){
+	return item % 2 === 0;
+})
+
+console.log('filter ', filter);
+
+//find - verifica se há algum tipo de informação no array
+
+const find = arr.find(function(item){
+	return item >=4 <=9;
+})
+
+console.log('find ', find);
+
+
