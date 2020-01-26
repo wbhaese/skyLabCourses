@@ -1,57 +1,79 @@
-//Aula 5 
+//lesson 07 - arrow functions 
+const arr = [1, 3, 4, 5, 6];
 
-function teste(x){
-	let y = 2; 
-
-	if (x > 5){
-
-		let y = 4;
-		console.log(x,y);
-	}
-}
-
-teste(10);
-
-//aula 6
-
-const arr = [1, 3, 4, 5, 8, 9]
-
-// map = percorre o array e multiplica por 2
+//arrow functions = atravésdo símbolo '=>'
+//fica desnecssário usar 'funtion()' e se for apenas
+//passado um parâmetro, 'item' pode ser removido de parênteses
+//e caso seja retornado apenas uma linha de código,
+// não é necessário usar 'return'
+//Ex. 1:
+//
 const newArr = arr.map(function(item) {
 	return item * 2;
 });
 
-console.log('newArrn ', newArr);
+console.log('newArr', newArr);
 
-const newArr2 = arr.map(function(item, index, test) {
-	return item + ' posição ' + index;
-});
+//Ex. 2 aplicando vídeo aula
 
-console.log('newArr2 ', newArr2);
+const newArr2 = arr.map(item => item *2);
 
-//reduce = faz a soma de todos os valores do array
-//soma [0] e [1], depois o resultado de ambos ao [2] e sucecivamente
+console.log('newArr',newArr2);
 
-const sum = arr.reduce(function(total, nextValue){
-	return total + nextValue; 
-})
+//abaixo, função usando 'const(s), mas não muito recomendado'
+//retorno valores, strings e arrays, mas não objetos.
+const test = () => [1, 2, 3, 4];
 
-console.log('sum ', sum);
+console.log(test());
 
-//filter 'filtra' valores do array conforme estipulado
+//para retornar objetos, a estrutura da função para arrays
 
-const filter = arr.filter(function(item){
-	return item % 2 === 0;
-})
+const test2 = () => ({nome: 'Wallace', age: 'under fifty' });
 
-console.log('filter ', filter);
+console.log(test2());
 
-//find - verifica se há algum tipo de informação no array
+//lesson 08 - default values (valores padrões)
 
-const find = arr.find(function(item){
-	return item >=4 <=9;
-})
+//Podemos estabelecer valores padrões, caso algum não não seja passado
+//abaixo função normal
+function soma(a, b){
+	return a + b;
+}
 
-console.log('find ', find);
+console.log(soma(1));//NaN pois foi passado apenas um valor
 
+//fun~ção com valores padrões
 
+const soma2 = (a = 3, b = 6) => a + b;
+
+console.log('soma2',soma2(1));//passando apenas valor de 'A'
+console.log('soma2',soma2());//não passando nenhum valor;
+
+//aula08 - dessestruturação de objetos
+
+const user = {
+	name: 'Fulano',
+	age: 23,
+	adress: {
+		city: 'Tokyo',
+		state: 'Tokyo'
+	},
+};
+
+console.log('user',user);
+
+//abaixo função sem desestruturação - under, function without desestruction
+
+function showName(usuario){
+	console.log('showName', user.nome);
+}
+
+//dentro da função, podemos dizer qual atributo do 
+//objeto queremos vizualisar, mas precisamos passar
+//o objeto para a função e definir os atributos entre chaves
+
+function showName2({name, age}){
+	console.log('showName2', name, age);
+}
+
+showName2(user);
