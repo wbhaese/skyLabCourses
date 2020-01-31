@@ -1,5 +1,31 @@
 //lesson 9 - rest spread
 
+//Rest - serve para pegar o restante de algum objeto, conforme abaixo
+
+const usuario = {
+    nome: 'Fulano',
+    idade: '26',
+    empresa: 'DevDev',
+}
+
+//código abaixo pega os valores após o atributo 'nome' e adiciona na variável 'resto'
+const {nome, ...resto } = usuario
+
+console.log('nome',nome);
+console.log('resto',resto);
+
+//também pode ser usado em vetores:
+//No caso abaixo, 
+
+const arr = [1, 2, 3, 4];
+
+//abaixo, 1º e 2º valor serão armazenados nas duas variáveis e o terceiro conterá o restante. 
+
+const [a, b, ...c] = arr;
+
+console.log('a',a);
+console.log('b',b);
+console.log('c',c);
 
 
 //Rest operator também serve para funções
