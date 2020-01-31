@@ -1,79 +1,74 @@
-//lesson 07 - arrow functions 
-const arr = [1, 3, 4, 5, 6];
+//lesson 9 - rest spread
 
-//arrow functions = atravésdo símbolo '=>'
-//fica desnecssário usar 'funtion()' e se for apenas
-//passado um parâmetro, 'item' pode ser removido de parênteses
-//e caso seja retornado apenas uma linha de código,
-// não é necessário usar 'return'
-//Ex. 1:
-//
-const newArr = arr.map(function(item) {
-	return item * 2;
-});
 
-console.log('newArr', newArr);
 
-//Ex. 2 aplicando vídeo aula
+//Rest operator também serve para funções
+//No exemplo abaixo seria necessário acrescentar sempre um novo atributo,
+// caso não soubéssemos quantos valores serão enviados
 
-const newArr2 = arr.map(item => item *2);
-
-console.log('newArr',newArr2);
-
-//abaixo, função usando 'const(s), mas não muito recomendado'
-//retorno valores, strings e arrays, mas não objetos.
-const test = () => [1, 2, 3, 4];
-
-console.log(test());
-
-//para retornar objetos, a estrutura da função para arrays
-
-const test2 = () => ({nome: 'Wallace', age: 'under fifty' });
-
-console.log(test2());
-
-//lesson 08 - default values (valores padrões)
-
-//Podemos estabelecer valores padrões, caso algum não não seja passado
-//abaixo função normal
 function soma(a, b){
 	return a + b;
 }
 
-console.log(soma(1));//NaN pois foi passado apenas um valor
 
-//fun~ção com valores padrões
+//usando Rest operator, não importa quantos valores serão enviados:
 
-const soma2 = (a = 3, b = 6) => a + b;
-
-console.log('soma2',soma2(1));//passando apenas valor de 'A'
-console.log('soma2',soma2());//não passando nenhum valor;
-
-//aula08 - dessestruturação de objetos
-
-const user = {
-	name: 'Fulano',
-	age: 23,
-	adress: {
-		city: 'Tokyo',
-		state: 'Tokyo'
-	},
-};
-
-console.log('user',user);
-
-//abaixo função sem desestruturação - under, function without desestruction
-
-function showName(usuario){
-	console.log('showName', user.nome);
+function soma2(...params){
+	return params.reduce((total, next ) => total + next);
 }
 
-//dentro da função, podemos dizer qual atributo do 
-//objeto queremos vizualisar, mas precisamos passar
-//o objeto para a função e definir os atributos entre chaves
+console.log('soma2', soma2(1,3,5,20));
 
-function showName2({name, age}){
-	console.log('showName2', name, age);
+// ainda podemos usar o conceito de 'resto'
+//pegando o valor de quantos parâmetros quisermo e 
+//o resto armazenar numa variável:
+
+function soma3(a, b, ...params){
+	let test = params.reduce((total, next) => total * next);
+	return(a + b + test); 
 }
 
-showName2(user);
+console.log('soma3', soma3(4,5,3,3));
+
+//SPREAD OPERATOR
+//ele propaga, repassa para outra estrutura de dados
+//no exemplo abaixo, iremo unir dois arrays
+
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+const arr3 = [...arr1, ...arr2];
+
+console.log('arr3', arr3);
+
+// outros usos do SPREAD
+//no exemplo abaixo, caso queira recriar um objeto 
+//mas trocar algum atributo:
+
+const user1 = {
+	name: 'Jack',
+	age: 25,
+	empresa: 'RaconCorporation'
+}
+
+//o três pontos (...) vão copiar todas as propriedades do objeto anterior
+//E devemos sobrepor a propriedade que quisermos
+
+const user2 = {...user1, age: 36};
+
+console.log('user2', user2);
+
+//Another way to put new data in an object.
+//On this case, it's and array;
+user2.name = ['John', 'Jack'];
+
+console.log('user2', user2);
+
+//LESSON 10
+//template literals = incluir variáveis dentro de strings no JS
+//É possível concatenar variáveis dentro da string, através das 'crases'
+
+const name = 'Fulano';
+const age = 26;
+
+console.log(`My name is ${name} and I'm ${age}`);
